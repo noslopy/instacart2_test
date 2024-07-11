@@ -38,5 +38,6 @@ module WeatherApp
     config.generators do |g|
       g.test_framework = nil
     end
+    config.active_storage.variant_processor = :mini_magick
   end
 end
