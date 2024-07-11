@@ -103,6 +103,7 @@ describe 'PhotosControllerController', type: :request do
         expect(json_response[0]).to include(caption: 'River', id: 1, image: /1\.jpg$/)
         expect(json_response[1]).to include(caption: 'Forest', id: 2, image: /2\.jpg$/)
         expect(json_response[2]).to include(caption: 'Field', id: 3, image: /3\.jpg$/)
+        # 
       end
     end
   end

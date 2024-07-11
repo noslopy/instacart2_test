@@ -22,6 +22,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
+gem 'mini_magick', '~>4.9'
+gem "active_storage_validations"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
