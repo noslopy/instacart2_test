@@ -19,9 +19,6 @@ class PhotosController < ApplicationController
 
     photo = Photo.new
     photo.caption = params[:photo][:caption]
-    # upload = MiniMagick::Image.new(params[:photo][:image].tempfile.path)
-    # upload.resize '300x300'
-    # photo.image.attach io: StringIO.open(upload.to_blob), filename: params[:photo][:image]
     photo.image.attach params[:photo][:image]
 
     begin
@@ -30,13 +27,13 @@ class PhotosController < ApplicationController
       render json: { errors: e.record.errors[:image] }, status: :unprocessable_entity
       return
     end
-    photo.image.blob.update(filename: "#{photo.id}.#{photo.image.blob.filename.extension}")
+
     render json: photo_filter(photo), status: :created
   end
 
   private
 
   def photo_filter photo
-    { caption: photo.caption, id: photo.id, image: photo.image.blob.filename }
+    { caption: photo.caption, id: photo.id, image: url_for(photo.image.variant(:sm)) }
   end
 end
